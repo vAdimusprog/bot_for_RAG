@@ -5,9 +5,8 @@ from start import start_router
 from aiogram.types import BotCommand, BotCommandScopeDefault
 
 async def set_commands():
-    commands = [BotCommand(command='start', description='Старт'),
-                BotCommand(command='start_2', description='Старт 2'),
-                BotCommand(command='start_3', description='Старт 3')]
+    commands = [BotCommand(command='start', description='Меню'),
+                BotCommand(command='faq', description='Частые вопросы')]
     await bot.set_my_commands(commands, BotCommandScopeDefault())
     print("Бот запущен и команды установлены!")
 
@@ -18,6 +17,7 @@ async def main():
     await set_commands()
     await bot.delete_webhook(drop_pending_updates=True)
     await dp.start_polling(bot)
+
 
 
 if __name__ == "__main__":

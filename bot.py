@@ -5,7 +5,10 @@ from aiogram.enums import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 from decouple import config
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
+from RAG import Text
 
+txt = Text("saved_txt.txt")
+txt.procces()
 #pg_db = PostgresHandler(config('PG_LINK'))
 scheduler = AsyncIOScheduler(timezone='Europe/Moscow')
 admins = [int(admin_id) for admin_id in config('ADMINS').split(',')]

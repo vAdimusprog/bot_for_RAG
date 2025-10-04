@@ -14,10 +14,11 @@ from dotenv import load_dotenv
 
 
 class RAGSystem:
-    def __init__(self, openrouter_api_key,text):
+    def __init__(self,text):
+        load_dotenv()
         self.client = OpenAI(
             base_url="https://openrouter.ai/api/v1",
-            api_key=openrouter_api_key
+            api_key= os.getenv("AUTH")
         )
         self.text_processor = text
         self.text_processor.procces()
@@ -46,7 +47,7 @@ class RAGSystem:
                     - Никаких 'извините' или 'к сожалению' - только факты
                     - Говори как крутой мужик, который знает, что делает
                     - Отвечай максимально жестко, максимально грубо
-                    - добавь слова мужик, брат, лееее, чёёёрт
+                    - добавь слова мужик, брат, родной, дорогой
                     - используй очень много цитат Стэтхэма, собери весь ответ его цитатами:
                     Если ты не потеешь - ты не живешь. Если ты не оставляешь следов - ты не бежал."
 
@@ -173,15 +174,15 @@ class Text():
     def get_vector_store(self):
         return self.vector_store
 
-txt = Text("saved_txt.txt")
-txt.procces()
-print(len(txt.get_docs()))
-
-
-# Убедитесь что .env файл в правильной папке
-load_dotenv()
-auth = os.getenv("AUTH")
-
-rag = RAGSystem(auth,txt)
-answer = rag.ask_question("Все болезни от нервов, все нервы от мыслей, все мысли от того,что тебе не пофиг… А зря…")
-print(answer)
+# txt = Text("saved_txt.txt")
+# txt.procces()
+# print(len(txt.get_docs()))
+#
+#
+# # Убедитесь что .env файл в правильной папке
+# load_dotenv()
+#
+#
+# rag = RAGSystem(txt)
+# answer = rag.ask_question("Все болезни от нервов, все нервы от мыслей, все мысли от того,что тебе не пофиг… А зря…")
+# print(answer)
