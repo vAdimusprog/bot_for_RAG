@@ -54,7 +54,7 @@ bot_for_RAG/
 🛠 Технологический стек
 Python 3.13
 
-FAISS - векторные embeddings и поиск
+FAISS - эмбединги и поиск
 
 Telegram Bot  - взаимодействие с пользователями
 
